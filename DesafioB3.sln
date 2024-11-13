@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioB3.Server", "DesafioB3.Server\DesafioB3.Server.csproj", "{E2502F69-FF75-4812-B2CA-16AB3F70DDFF}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "desafiob3.client", "desafiob3.client\desafiob3.client.esproj", "{50FDD1D1-D8AB-46A1-93E8-808A7B361720}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2502F69-FF75-4812-B2CA-16AB3F70DDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2502F69-FF75-4812-B2CA-16AB3F70DDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2502F69-FF75-4812-B2CA-16AB3F70DDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2502F69-FF75-4812-B2CA-16AB3F70DDFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FDD1D1-D8AB-46A1-93E8-808A7B361720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FDD1D1-D8AB-46A1-93E8-808A7B361720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FDD1D1-D8AB-46A1-93E8-808A7B361720}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{50FDD1D1-D8AB-46A1-93E8-808A7B361720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FDD1D1-D8AB-46A1-93E8-808A7B361720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FDD1D1-D8AB-46A1-93E8-808A7B361720}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4895D12B-E5DB-4C83-9F09-B900F5B0721E}
+	EndGlobalSection
+EndGlobal

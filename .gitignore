@@ -1,0 +1,8 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/DesafioB3.Server/bin/Debug/net8.0
+/DesafioB3.Server/obj
+/.vs/DesafioB3/FileContentIndex
+/.vs
