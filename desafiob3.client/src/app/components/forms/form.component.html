@@ -1,0 +1,21 @@
+<div class="example-container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Valor</mat-label>
+      <input matInput type="number" class="example-right-align" placeholder="0" formControlName="initialvalue" />
+      <span matTextPrefix>R$&nbsp;</span>
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Período (meses)</mat-label>
+      <input matInput type="number" class="example-right-align" placeholder="0" formControlName="quantity" />
+    </mat-form-field>
+    <div class="example-button-row">
+      <button mat-stroked-button type="reset">Limpar</button>
+      <button mat-flat-button type="submit" [disabled]="!formGroup.valid">Calcular</button>
+    </div>
+  </form>
+  <div *ngIf="calculationResult$ | async as result">
+    <p><strong>Valor bruto: </strong>R$ {{ result.grossAmount | number: '1.2-2' }}</p>
+    <p><strong>Valor líquido: </strong>R$ {{ result.netAmount | number: '1.2-2' }}</p>
+  </div>
+</div>
