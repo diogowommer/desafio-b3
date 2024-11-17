@@ -8,12 +8,10 @@ public class CalculateAmountCommandValidator : AbstractValidator<CalculateAmount
     {
         RuleFor(command => command.InitialValue)
             .NotNull()
-            .NotEmpty()
-            .GreaterThan(1);
+            .GreaterThan(0);
 
         RuleFor(command => command.Quantity)
             .NotNull()
-            .NotEmpty()
             .GreaterThan(1);
     }
 }
