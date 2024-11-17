@@ -12,7 +12,7 @@ export class CalculateAmountService {
   constructor(private httpClient: HttpClient) { }
 
   calculateAmount(data: CalculationRequest): Observable<CalculationResponse> {
-    return this.httpClient.post<CalculationResponse>(`${this.baseUrl}/CalculateAmount`, data);
+    return this.httpClient.post<CalculationResponse>(`${this.baseUrl}/api/calculate-amount`, data);
   }
 
 }

@@ -1,4 +1,4 @@
-using DesafioB3.Server.Model;
+using DesafioB3.API.Features.CalculateAmount;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioB3.Server.Controllers
@@ -17,13 +17,10 @@ namespace DesafioB3.Server.Controllers
         [HttpPost(Name = "CalculateAmount")]
         public CalculateAmountResponse Post(CalculateAmountRequest request)
         {
-            CalculateAmountResponse response = new CalculateAmountResponse()
-            {
-                GrossAmount = request.InitialValue * request.Quantity,
-                NetAmount = (request.InitialValue * request.Quantity) - 100
-            };
+            decimal grossAmount = request.InitialValue * request.Quantity;
+            decimal netAmount = (request.InitialValue * request.Quantity) - 100;
 
-            return response;
+            return new CalculateAmountResponse(grossAmount, netAmount);
         }
     }
 }

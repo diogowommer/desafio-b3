@@ -6,3 +6,5 @@
 /DesafioB3.Server/obj
 /.vs/DesafioB3/FileContentIndex
 /.vs
+/DesafioB3.Domain.Core/bin/Debug/net8.0
+/DesafioB3.Domain.Core/obj

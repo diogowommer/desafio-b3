@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DesafioB3.Domain.Core": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
