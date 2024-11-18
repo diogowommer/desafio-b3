@@ -3,4 +3,4 @@ using MediatR;
 
 namespace DesafioB3.API.Features.CalculateAmount;
 
-public record CalculateAmountCommand(decimal InitialValue, decimal Quantity) : IRequest<CalculateAmountResponse>, ICommand;
+public record CalculateAmountCommand(decimal InitialValue, int Quantity) : IRequest<CalculateAmountResponse>, ICommand;
