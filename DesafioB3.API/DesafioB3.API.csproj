@@ -25,7 +25,7 @@
     <ProjectReference Include="..\desafiob3.client\Desafiob3.Client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\DesafioB3.Domain.Core\DesafioB3.Core.csproj" />
+    <ProjectReference Include="..\DesafioB3.Core\DesafioB3.Core.csproj" />
   </ItemGroup>
 
 </Project>

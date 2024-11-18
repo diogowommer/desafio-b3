@@ -10,3 +10,7 @@
 /DesafioB3.Domain.Core/obj
 /DesafioB3.API.UnitTests/bin/Debug/net8.0
 /DesafioB3.API.UnitTests/obj
+/DesafioB3.API/bin/Debug/net8.0
+/DesafioB3.API/obj
+/DesafioB3.Core/bin/Debug/net8.0
+/DesafioB3.Core/obj
