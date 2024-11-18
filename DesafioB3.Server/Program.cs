@@ -8,11 +8,7 @@ using DesafioB3.Core.Domain;
 var builder = WebApplication.CreateBuilder(args);
 
 var accountsAssembly = typeof(Program).Assembly;
-var accountsAssemblyName = accountsAssembly.GetName();
 
-// Add services to the container.
-
-//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -25,6 +21,7 @@ builder.Services.AddMediatR(configuration =>
 
 builder.Services.AddValidators(accountsAssembly);
 builder.Services.AddSingleton<IExceptionHandler, ExceptionHandler>();
+
 builder.Services.AddCors(options => options.AddPolicy(name: "FrontEnd",
     policy =>
     {
