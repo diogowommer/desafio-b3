@@ -9,7 +9,12 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Desafiob3.Client", "desafio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioB3.Core", "DesafioB3.Domain.Core\DesafioB3.Core.csproj", "{C27ECDB6-1FB2-43FF-AFFA-D72A6F074BAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioB3.API.UnitTests", "DesafioB3.API.UnitTests\DesafioB3.API.UnitTests.csproj", "{8CA658C7-10F8-4A08-817B-CE21AD71DE3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioB3.API.UnitTests", "DesafioB3.API.UnitTests\DesafioB3.API.UnitTests.csproj", "{8CA658C7-10F8-4A08-817B-CE21AD71DE3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{DFF36B7F-6DD0-4B60-A24E-481341AEF24B}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
