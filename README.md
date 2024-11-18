@@ -1,6 +1,6 @@
 ## DesafioB3
 
-Projeto desenvolvido em .Net 8 para o backend e Angular 18 para o frontend. A arquitetura de vertical slice foi escolhida para a implementaÁ„o da API.
+Projeto desenvolvido em .Net 8 para o backend e Angular 18 para o frontend. A arquitetura de vertical slice foi escolhida para a implementa√ß√£o da API.
 
 ### Requirements
 
@@ -8,10 +8,10 @@ Projeto desenvolvido em .Net 8 para o backend e Angular 18 para o frontend. A ar
 - Docker
 - Angular 18
 
-### ConfiguraÁ„o
+### Configura√ß√£o
 
-ApÛs a execuÁ„o do projeto, ser· necess·rio verificar a porta em que se encontra a API e configurar a Web no seguinte arquivo de configuraÁ„o de ambiente:
+Ap√≥s a execu√ß√£o do projeto, ser√° necess√°rio verificar a porta em que se encontra a API e configurar a Web no seguinte arquivo de configura√ß√£o de ambiente:
 
-- [] Acessar Desafiob3.Client/src/environments/environment.ts
-- [] Alterar a propriedade apiUrl
+- [ ] Acessar Desafiob3.Client/src/environments/environment.ts
+- [ ] Alterar a propriedade apiUrl
 
