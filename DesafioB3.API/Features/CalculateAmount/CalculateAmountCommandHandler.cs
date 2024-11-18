@@ -51,9 +51,9 @@ public class CalculateAmountCommandHandler : IRequestHandler<CalculateAmountComm
 
     public Task<CalculateAmountResponse> Handle(CalculateAmountCommand request, CancellationToken cancellationToken)
     {
-        decimal grossValue = CalculateGrossValue(request.InitialValue, request.Quantity);
+        decimal grossValue = Math.Round(CalculateGrossValue(request.InitialValue, request.Quantity), 2);
         decimal taxRate = DetermineTaxRate(request.Quantity);
-        decimal netValue = CalculateNetValue(grossValue, request.InitialValue, taxRate);
+        decimal netValue = Math.Round(CalculateNetValue(grossValue, request.InitialValue, taxRate), 2);
 
         return Task.FromResult(new CalculateAmountResponse(grossValue, netValue));
     }
