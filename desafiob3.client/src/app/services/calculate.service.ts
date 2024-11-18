@@ -18,7 +18,7 @@ export class CalculateAmountService {
         const errorResponse: CalculationResponse = {
           grossAmount: 0,
           netAmount: 0,
-          errorMessage: error?.error[0]?.errorMessage || 'Erro desconhecido!',
+          errorMessage: error?.error[0]?.errorMessage || 'Falha ao conectar ao servidor!',
         };
 
         return of(errorResponse);

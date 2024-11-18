@@ -7,8 +7,8 @@ Projeto desenvolvido em .Net 8 para o backend e Angular 18 para o frontend. A ar
 ### Requirements
 
 - .NET 8 SDK
-- Docker
 - Angular 18
+- Docker
 
 ### Configuração
 

@@ -1,3 +1,7 @@
+.example-container {
+    padding-top: 36px
+}
+
 .example-container mat-form-field + mat-form-field {
   margin-left: 8px;
 }
@@ -21,4 +25,13 @@ input.example-right-align {
 
 .example-button-row .mat-mdc-button-base {
   margin: 8px 8px 8px 0;
+}
+
+.submit {
+  background: #FFD862 !important;
+  color: #002C63 !important;
+}
+
+.clear {
+  color: #002C63 !important;
 }

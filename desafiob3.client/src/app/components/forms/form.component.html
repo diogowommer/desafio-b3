@@ -10,8 +10,8 @@
       <input matInput type="number" class="example-right-align" placeholder="0" formControlName="quantity" />
     </mat-form-field>
     <div class="example-button-row">
-      <button mat-stroked-button type="reset">Limpar</button>
-      <button mat-flat-button type="submit" [disabled]="!formGroup.valid">Calcular</button>
+      <button class="clear" mat-stroked-button type="reset">Limpar</button>
+      <button class="submit" mat-flat-button type="submit" [disabled]="!formGroup.valid">Calcular</button>
     </div>
   </form>
   <div *ngIf="calculationResult$ | async as result">
