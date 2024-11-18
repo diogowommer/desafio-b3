@@ -1,13 +1,11 @@
 // A mini-application
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule, Component } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Injectable()
 export class Logger {
   log(message: string) { console.log(message); }
 }
-
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +17,7 @@ export class AppComponent {
   }
 }
 
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
 @NgModule({
   imports: [BrowserModule],
   providers: [Logger,],
@@ -31,5 +28,4 @@ import { BrowserModule } from '@angular/platform-browser';
 export class AppModule { }
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 platformBrowserDynamic().bootstrapModule(AppModule);

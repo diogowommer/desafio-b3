@@ -15,16 +15,13 @@ export class CalculateAmountService {
   calculateAmount(data: CalculationRequest): Observable<CalculationResponse> {
     return this.httpClient.post<CalculationResponse>(`${this.baseUrl}/api/calculate-amount`, data).pipe(
       catchError(error => {
-        if (error.status === 400) {
-          const errorResponse: CalculationResponse = {
-            grossAmount: 0,
-            netAmount: 0,
-            errorMessage: error?.error[0]?.errorMessage || 'Erro desconhecido',
-          };
+        const errorResponse: CalculationResponse = {
+          grossAmount: 0,
+          netAmount: 0,
+          errorMessage: error?.error[0]?.errorMessage || 'Erro desconhecido!',
+        };
 
-          return of(errorResponse);
-        }
-        return throwError(() => error);
+        return of(errorResponse);
       }));
   }
 
