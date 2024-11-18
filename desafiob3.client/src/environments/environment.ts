@@ -1,5 +1,5 @@
 export const enviroment = {
   production: false,
   appName: 'desafioB3',
-  apiUrl: 'https://localhost:49999'
+  apiUrl: 'https://localhost:49201'
 }
