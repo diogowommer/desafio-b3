@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioB3.API", "DesafioB3.
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Desafiob3.Client", "desafiob3.client\Desafiob3.Client.esproj", "{50FDD1D1-D8AB-46A1-93E8-808A7B361720}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioB3.Core", "DesafioB3.Domain.Core\DesafioB3.Core.csproj", "{C27ECDB6-1FB2-43FF-AFFA-D72A6F074BAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioB3.Core", "DesafioB3.Domain.Core\DesafioB3.Core.csproj", "{C27ECDB6-1FB2-43FF-AFFA-D72A6F074BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioB3.API.UnitTests", "DesafioB3.API.UnitTests\DesafioB3.API.UnitTests.csproj", "{8CA658C7-10F8-4A08-817B-CE21AD71DE3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{C27ECDB6-1FB2-43FF-AFFA-D72A6F074BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C27ECDB6-1FB2-43FF-AFFA-D72A6F074BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C27ECDB6-1FB2-43FF-AFFA-D72A6F074BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CA658C7-10F8-4A08-817B-CE21AD71DE3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA658C7-10F8-4A08-817B-CE21AD71DE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CA658C7-10F8-4A08-817B-CE21AD71DE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CA658C7-10F8-4A08-817B-CE21AD71DE3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
