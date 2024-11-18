@@ -1,10 +1,11 @@
-namespace DesafioB3.API.UnitTests
-{
-    using Xunit;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using DesafioB3.API.Features.CalculateAmount;
+using System.Threading;
+using System.Threading.Tasks;
+using DesafioB3.API.Features.CalculateAmount;
+using FluentAssertions;
+using Xunit;
 
+namespace DesafioB3.Tests.Features.CalculateAmount
+{
     public class CalculateAmountCommandHandlerTests
     {
         private readonly CalculateAmountCommandHandler _handler;
@@ -14,56 +15,84 @@ namespace DesafioB3.API.UnitTests
             _handler = new CalculateAmountCommandHandler();
         }
 
-        [Theory]
-        [InlineData(1000, 6, 1059.76, 1046.31)] // Test case for 6 months
-        [InlineData(1000, 12, 1123.08, 1098.47)] // Test case for 12 months
-        [InlineData(1000, 24, 1261.31, 1215.58)] // Test case for 24 months
-        [InlineData(1000, 36, 1416.56, 1354.07)] // Test case for 36 months
-        public async Task CalculateAmount_ReturnsExpectedValues(decimal initialValue, int months, decimal expectedGrossValue, decimal expectedNetValue)
+        [Fact]
+        public async Task Handle_ShouldReturnCorrectValues_ForShortTerm()
         {
             // Arrange
-            var command = new CalculateAmountCommand(initialValue, months);
+            var command = new CalculateAmountCommand(1000m, 6);
 
             // Act
-            var response = await _handler.Handle(command, CancellationToken.None);
+            var result = await _handler.Handle(command, CancellationToken.None);
 
             // Assert
-            Assert.Equal(expectedGrossValue, Math.Round(response.GrossAmount, 2));
-            Assert.Equal(expectedNetValue, Math.Round(response.NetAmount, 2));
+            result.GrossAmount.Should().BeApproximately(1059.75m, 0.01m); 
+            result.NetAmount.Should().BeApproximately(1046.31m, 0.01m);
         }
 
         [Fact]
-        public void CalculateFinalValue_CalculatesCorrectly()
+        public async Task Handle_ShouldReturnCorrectValues_ForMediumTerm()
         {
             // Arrange
-            decimal initialValue = 1000;
-            int months = 6;
+            var command = new CalculateAmountCommand(1000m, 12);
 
             // Act
-            decimal result = CalculateAmountCommandHandler.CalculateFinalValue(initialValue, months);
+            var result = await _handler.Handle(command, CancellationToken.None);
 
             // Assert
-            Assert.Equal(1059.76m, Math.Round(result, 2));
+            result.GrossAmount.Should().BeApproximately(1123.08m, 0.01m);
+            result.NetAmount.Should().BeApproximately(1098.46m, 0.01m);
         }
 
-        [Theory]
-        [InlineData(6, 0.225)]  // Tax rate for 6 months
-        [InlineData(12, 0.20)]  // Tax rate for 12 months
-        [InlineData(24, 0.175)] // Tax rate for 24 months
-        [InlineData(36, 0.15)]  // Tax rate for 36 months
-        public void GetTaxRate_ReturnsCorrectRate(int months, decimal expectedRate)
+        [Fact]
+        public async Task Handle_ShouldReturnCorrectValues_ForLongTerm()
         {
+            // Arrange
+            var command = new CalculateAmountCommand(1000m, 24);
+
             // Act
-            var result = typeof(CalculateAmountCommandHandler)
-                .GetMethod("GetTaxRate", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)!
-                .Invoke(null, [months]);
-
-            Assert.NotNull(result);
-
-            decimal taxRate = (decimal)result!;
+            var result = await _handler.Handle(command, CancellationToken.None);
 
             // Assert
-            Assert.Equal(expectedRate, taxRate);
+            result.GrossAmount.Should().BeApproximately(1261.31m, 0.01m);
+            result.NetAmount.Should().BeApproximately(1215.58m, 0.01m);
+        }
+
+        [Fact]
+        public async Task Handle_ShouldReturnCorrectValues_ForExtendedTerm()
+        {
+            // Arrange
+            var command = new CalculateAmountCommand(1000m, 36);
+
+            // Act
+            var result = await _handler.Handle(command, CancellationToken.None);
+
+            // Assert
+            result.GrossAmount.Should().BeApproximately(1416.55m, 0.01m);
+            result.NetAmount.Should().BeApproximately(1354.07m, 0.01m);
+        }
+
+        [Fact]
+        public void CalculateGrossValue_ShouldHandleZeroMonths()
+        {
+            // Arrange
+            var initialValue = 1000m;
+            var months = 0;
+
+            // Act
+            var grossValue = CalculateAmountCommandHandler.CalculateGrossValue(initialValue, months);
+
+            // Assert
+            grossValue.Should().Be(1000m);
+        }
+
+        [Fact]
+        public void DetermineTaxRate_ShouldReturnCorrectRate()
+        {
+            // Act & Assert
+            CalculateAmountCommandHandler.DetermineTaxRate(3).Should().Be(0.225m);
+            CalculateAmountCommandHandler.DetermineTaxRate(9).Should().Be(0.20m);
+            CalculateAmountCommandHandler.DetermineTaxRate(18).Should().Be(0.175m);
+            CalculateAmountCommandHandler.DetermineTaxRate(30).Should().Be(0.15m);
         }
     }
 }

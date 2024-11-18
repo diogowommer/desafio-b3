@@ -9,60 +9,51 @@ public class CalculateAmountCommandHandler : IRequestHandler<CalculateAmountComm
     private const decimal CDI_RATE = 0.009m;     
     
     //TB – 108%
-    private const decimal BANK_RATE = 1.08m;    
+    private const decimal BANK_RATE = 1.08m;
+
+    // Tax rates by period
+    // Up to 6 months
+    private const decimal SHORT_TERM_TAX = 0.225m;
+    // Up to 12 months
+    private const decimal MEDIUM_TERM_TAX = 0.20m;
+    // Up to 24 months
+    private const decimal LONG_TERM_TAX = 0.175m;
+    // Above 24 months
+    private const decimal EXTENDED_TERM_TAX = 0.15m;
 
     public CalculateAmountCommandHandler()
     {
     }
 
-    public static decimal CalculateFinalValue(decimal initialValue, int months)
+    public static decimal CalculateGrossValue(decimal initialValue, int months)
     {
-        decimal finalValue = initialValue;
-
-        for (int i = 0; i < months; i++)
-        {
-            //VF = VI x [1 + (CDI x TB)]
-            finalValue *= (1 + (CDI_RATE * BANK_RATE));
-        }
-
-        return finalValue;
+        //VF = VI x [1 + (CDI x TB)]
+        return Enumerable
+            .Range(0, months)
+            .Aggregate(initialValue, (currentValue, _) => currentValue * (1 + (CDI_RATE * BANK_RATE)));
     }
 
-    private static decimal GetTaxRate(int months)
+    public static decimal DetermineTaxRate(int months) =>
+        months switch
+        {
+            <= 6 => SHORT_TERM_TAX,
+            <= 12 => MEDIUM_TERM_TAX,
+            <= 24 => LONG_TERM_TAX,
+            _ => EXTENDED_TERM_TAX
+        };
+
+    private static decimal CalculateNetValue(decimal grossValue, decimal initialValue, decimal taxRate)
     {
-        //Até 06 meses: 22,5%
-        if (months <= 6)
-        {
-            return 0.225m;  
-        }
-        //Até 12 meses: 20%
-        else if (months <= 12)
-        {
-            return 0.20m;
-        }
-        //Até 24 meses 17,5%
-        else if (months <= 24)
-        {
-            return 0.175m;
-        }
-        //Acima de 24 meses 15%
-        else
-        {
-            return 0.15m;
-        }
+        decimal profit = grossValue - initialValue;
+        decimal taxAmount = profit * taxRate;
+        return grossValue - taxAmount;
     }
 
     public Task<CalculateAmountResponse> Handle(CalculateAmountCommand request, CancellationToken cancellationToken)
     {
-        decimal grossValue = CalculateFinalValue(request.InitialValue, request.Quantity);
-
-        decimal taxRate = GetTaxRate(request.Quantity);
-
-        decimal profit = grossValue - request.InitialValue;
-
-        decimal taxAmount = profit * taxRate;
-
-        decimal netValue = grossValue - taxAmount;
+        decimal grossValue = CalculateGrossValue(request.InitialValue, request.Quantity);
+        decimal taxRate = DetermineTaxRate(request.Quantity);
+        decimal netValue = CalculateNetValue(grossValue, request.InitialValue, taxRate);
 
         return Task.FromResult(new CalculateAmountResponse(grossValue, netValue));
     }
