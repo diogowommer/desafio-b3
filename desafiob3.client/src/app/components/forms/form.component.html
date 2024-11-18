@@ -15,7 +15,12 @@
     </div>
   </form>
   <div *ngIf="calculationResult$ | async as result">
-    <p><strong>Valor bruto: </strong>R$ {{ result.grossAmount | number: '1.2-2' }}</p>
-    <p><strong>Valor líquido: </strong>R$ {{ result.netAmount | number: '1.2-2' }}</p>
+    <div *ngIf="result.errorMessage; else noError" class="error-message">
+      <p>{{ result.errorMessage }}</p>
+    </div>
+    <ng-template #noError>
+      <p><strong>Valor bruto: </strong>R$ {{ result.grossAmount | number: '1.2-2' }}</p>
+      <p><strong>Valor líquido: </strong>R$ {{ result.netAmount | number: '1.2-2' }}</p>
+    </ng-template>
   </div>
 </div>

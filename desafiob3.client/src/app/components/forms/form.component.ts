@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCalculation } from './form.model';
 import { CalculateAmountService } from '../../services/calculate.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { CalculationResponse } from '../../services/calculate.model';
 import { CommonModule, NgIf } from '@angular/common';
 
@@ -21,13 +21,12 @@ import { CommonModule, NgIf } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent {
+  [x: string]: any;
   formGroup: FormGroup;
   post: FormCalculation | undefined;
-
-  // Inicializando calculationResult$ com um Observable vazio
   calculationResult$: Observable<CalculationResponse> = new Observable();
 
-  constructor(private formBuilder: FormBuilder, private calculateService: CalculateAmountService) {
+  constructor(private readonly formBuilder: FormBuilder, private readonly calculateService: CalculateAmountService) {
     this.formGroup = this.formBuilder.group({
       'initialvalue': [null, Validators.required],
       'quantity': [null, Validators.required],
@@ -41,11 +40,13 @@ export class FormComponent {
     event.stopPropagation();
   }
 
-  // Lógica para o envio do formulário
   onSubmit(post: FormCalculation) {
     this.post = post;
 
-    // Atribuindo o Observable que será assinado pelo async pipe no template
-    this.calculationResult$ = this.calculateService.calculateAmount(post);
+    this.calculationResult$ = this.calculateService.calculateAmount(post).pipe(
+      catchError(error => {
+        return of(error);
+      })
+    );
   }
 }
