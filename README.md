@@ -2,6 +2,8 @@
 
 Projeto desenvolvido em .Net 8 para o backend e Angular 18 para o frontend. A arquitetura de vertical slice foi escolhida para a implementação da API.
 
+![image](https://github.com/user-attachments/assets/3787de0e-af3b-4c38-b675-5e255b362fef)
+
 ### Requirements
 
 - .NET 8 SDK
