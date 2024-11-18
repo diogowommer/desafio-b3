@@ -1,4 +1,4 @@
-## DesafioB3
+## DesafioB3 :bank:
 
 Projeto desenvolvido em .Net 8 para o backend e Angular 18 para o frontend. A arquitetura de vertical slice foi escolhida para a implementação da API.
 
